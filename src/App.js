@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from 'react'
+import Discount from './Discount'
 function App() {
+  let [checked, setChecked] = useState(false)
+
+  const handelChange = () => {
+    setChecked(!checked)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container pt-4'>
+      <h1>Mount Vs Update</h1>
+
+      <h3>Do you agree?</h3>
+      <form className='pt-4'>
+        <div className='form-check form-switch'>
+          <input
+            className='form-check-input'
+            type='checkbox'
+            id='flexSwitchCheckChecked'
+            value={checked}
+            onChange={handelChange}
+          />
+          <label className='form-check-label' htmlFor='flexSwitchCheckChecked'>
+            I Agree
+          </label>
+        </div>
+      </form>
+
+      <Discount agree={checked} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
